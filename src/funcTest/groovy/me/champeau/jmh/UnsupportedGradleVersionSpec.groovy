@@ -35,6 +35,6 @@ class UnsupportedGradleVersionSpec extends AbstractFuncSpec {
 	result.output.contains('Please upgrade Gradle or use an older version of the JMH Gradle plugin.')
 
         where:
-        gradleVersion << GradleVersion.version('6.9')
+        gradleVersion << GradleVersion.version('7.6')
     }
 }
