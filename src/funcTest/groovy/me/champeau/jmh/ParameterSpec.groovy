@@ -15,7 +15,6 @@
  */
 package me.champeau.jmh
 
-import org.gradle.util.GradleVersion
 import spock.lang.Unroll
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
@@ -39,7 +38,6 @@ class ParameterSpec extends AbstractFuncSpec {
 
     def "executes with configuration cache"() {
         given:
-        usingGradleVersion(GradleVersion.version("7.6"))
         usingSample("java-project")
 
         when:

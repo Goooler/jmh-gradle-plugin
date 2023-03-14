@@ -25,7 +25,7 @@ import spock.lang.TempDir
 abstract class AbstractFuncSpec extends Specification {
 
     protected static final List<GradleVersion> TESTED_GRADLE_VERSIONS = [
-            GradleVersion.version('7.0'),
+            GradleVersion.version('8.0'),
             GradleVersion.current()
     ]
 
@@ -83,13 +83,10 @@ abstract class AbstractFuncSpec extends Specification {
     }
 
     private List<String> calculateArguments(String... arguments) {
-        def gradleVersionWithConfigurationCache = testedGradleVersion >= GradleVersion.version('6.6')
-        if (gradleVersionWithConfigurationCache && noConfigurationCacheReason) {
+        if (noConfigurationCacheReason) {
             println("Configuration cache disabled: $noConfigurationCacheReason")
         }
-        (gradleVersionWithConfigurationCache && !noConfigurationCacheReason
-                ? ['--stacktrace',
-                   '--configuration-cache']
-                : ['--stacktrace']) + (arguments as List)
+        (!noConfigurationCacheReason ? ['--stacktrace', '--configuration-cache']: ['--stacktrace']) +
+                (arguments as List)
     }
 }
