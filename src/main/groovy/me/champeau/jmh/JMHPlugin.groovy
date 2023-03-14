@@ -39,7 +39,7 @@ import org.gradle.util.GradleVersion
  * Configures the JMH Plugin.
  */
 class JMHPlugin implements Plugin<Project> {
-    private static GradleVersion GRADLE_MIN = GradleVersion.version('7.0')
+    private static GradleVersion GRADLE_MIN = GradleVersion.version('8.0')
     private static boolean IS_GRADLE_MIN = GradleVersion.current() >= GRADLE_MIN
 
     static final String JMH_CORE_DEPENDENCY = 'org.openjdk.jmh:jmh-core:'

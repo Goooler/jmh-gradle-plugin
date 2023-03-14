@@ -83,13 +83,10 @@ abstract class AbstractFuncSpec extends Specification {
     }
 
     private List<String> calculateArguments(String... arguments) {
-        def gradleVersionWithConfigurationCache = testedGradleVersion >= GradleVersion.version('6.6')
-        if (gradleVersionWithConfigurationCache && noConfigurationCacheReason) {
+        if (noConfigurationCacheReason) {
             println("Configuration cache disabled: $noConfigurationCacheReason")
         }
-        (gradleVersionWithConfigurationCache && !noConfigurationCacheReason
-                ? ['--stacktrace',
-                   '--configuration-cache']
-                : ['--stacktrace']) + (arguments as List)
+        (!noConfigurationCacheReason ? ['--stacktrace', '--configuration-cache']: ['--stacktrace']) +
+                (arguments as List)
     }
 }
