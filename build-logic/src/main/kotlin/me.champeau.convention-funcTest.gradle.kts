@@ -29,10 +29,10 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
 
 configurations {
     named("functionalTestImplementation") {
-        extendsFrom(getByName("testImplementation"))
+        extendsFrom(testImplementation.get())
     }
     named("functionalTestRuntimeOnly") {
-        extendsFrom(getByName("testRuntimeOnly"))
+        extendsFrom(testRuntimeOnly.get())
     }
     val pluginsUnderTest by creating {
         isCanBeConsumed = false
@@ -42,14 +42,14 @@ configurations {
         isCanBeConsumed = false
         isCanBeResolved = true
         attributes {
-            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage::class, Usage.JAVA_RUNTIME))
-            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category::class, Category.LIBRARY))
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named<Usage>(Usage.JAVA_RUNTIME))
+            attribute(Category.CATEGORY_ATTRIBUTE, objects.named<Category>(Category.LIBRARY))
             attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 8)
-            attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling::class, Bundling.EXTERNAL))
+            attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named<Bundling>(Bundling.EXTERNAL))
         }
-        extendsFrom(getByName("implementation"), getByName("runtimeOnly"), pluginsUnderTest)
+        extendsFrom(implementation.get(), runtimeOnly.get(), pluginsUnderTest)
     }
-    getByName("testImplementation").extendsFrom(pluginsUnderTest)
+    testImplementation.get().extendsFrom(pluginsUnderTest)
 }
 
 gradlePlugin {
