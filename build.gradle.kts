@@ -42,7 +42,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:$spockVersion") {
         exclude(mapOf("group" to "org.codehaus.groovy"))
     }
-    //"pluginsUnderTest"("gradle.plugin.com.github.johnrengelman:shadow:$shadowVersion")
+    pluginsUnderTest("gradle.plugin.com.github.johnrengelman:shadow:$shadowVersion")
 
     testImplementation("org.openjdk.jmh:jmh-core:$jmhVersion")
     testImplementation("org.openjdk.jmh:jmh-generator-bytecode:$jmhVersion")
