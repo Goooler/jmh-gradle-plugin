@@ -20,6 +20,7 @@ plugins {
     id("net.nemerosa.versioning") version "3.0.0"
     id("com.github.kt3k.coveralls") version "2.12.2"
     id("me.champeau.plugin-configuration")
+    id("me.champeau.convention-test")
     id("jacoco")
     id("groovy")
 }
@@ -29,7 +30,6 @@ buildScanRecipes {
     recipe(mapOf("baseUrl" to "https://github.com/melix/jmh-gradle-plugin/tree"), "git-commit")
 }
 
-apply(from = "gradle/test.gradle")
 apply(from = "gradle/funcTest.gradle")
 
 val jmhVersion: String by project
