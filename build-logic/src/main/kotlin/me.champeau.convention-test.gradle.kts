@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-plugins {
-    `java-gradle-plugin`
-}
-
 tasks.withType<Test>().configureEach {
     addTestListener(object : TestListener {
         override fun beforeSuite(suite: TestDescriptor) = Unit
