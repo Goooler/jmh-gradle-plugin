@@ -1,6 +1,3 @@
-import gradle.kotlin.dsl.accessors._799923a3c3607831a5fe8c55b168309c.check
-import gradle.kotlin.dsl.accessors._799923a3c3607831a5fe8c55b168309c.gradlePlugin
-import gradle.kotlin.dsl.accessors._799923a3c3607831a5fe8c55b168309c.sourceSets
 import org.gradle.api.internal.artifacts.dsl.dependencies.DependencyFactoryInternal
 import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
 
@@ -19,6 +16,10 @@ import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+plugins {
+    `java-gradle-plugin`
+}
 
 val functionalTestSourceSet = sourceSets.create("functionalTest") {
     java.srcDirs("src/funcTest/groovy")
@@ -74,7 +75,7 @@ val functionalTest by tasks.registering(Test::class) {
     group = "verification"
     testClassesDirs = functionalTestSourceSet.output.classesDirs
     classpath = functionalTestSourceSet.runtimeClasspath
-    mustRunAfter(tasks.named("test"))
+    mustRunAfter(tasks.test)
 
     reports {
         html.outputLocation = project.file("${html.outputLocation.asFile.get().path}/functional")
