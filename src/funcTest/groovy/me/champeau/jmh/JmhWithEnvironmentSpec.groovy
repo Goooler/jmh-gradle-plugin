@@ -33,7 +33,7 @@ class JmhWithEnvironmentSpec extends AbstractFuncSpec {
         then:
         result.task(":jmh").outcome == SUCCESS
         result.output.contains('got MY_ENV1=my_value1')
-        result.output.contains('got MY_ENV2=my_value2')
+        result.output.contains('got MY_ENV2=my_value3')
 
         where:
         gradleVersion << TESTED_GRADLE_VERSIONS
