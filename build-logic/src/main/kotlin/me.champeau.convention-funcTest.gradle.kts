@@ -1,6 +1,3 @@
-import org.gradle.api.internal.artifacts.dsl.dependencies.DependencyFactoryInternal
-import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
-
 /*
  * Copyright 2014-2021 the original author or authors.
  *
@@ -16,6 +13,9 @@ import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import org.gradle.api.internal.artifacts.dsl.dependencies.DependencyFactoryInternal
+import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
 
 plugins {
     groovy
