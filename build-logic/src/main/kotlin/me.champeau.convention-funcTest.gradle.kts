@@ -18,11 +18,12 @@ import org.gradle.internal.component.local.model.OpaqueComponentIdentifier
  */
 
 plugins {
+    groovy
     `java-gradle-plugin`
 }
 
 val functionalTestSourceSet = sourceSets.create("functionalTest") {
-    java.srcDirs("src/funcTest/groovy")
+    groovy.srcDirs("src/funcTest/groovy")
     resources.srcDirs("src/funcTest/resources")
 }
 
