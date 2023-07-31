@@ -22,8 +22,8 @@ plugins {
     id("me.champeau.plugin-configuration")
     id("me.champeau.convention-test")
     id("me.champeau.convention-funcTest")
-    id("jacoco")
-    id("groovy")
+    jacoco
+    groovy
 }
 
 buildScanRecipes {
