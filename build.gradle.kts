@@ -16,7 +16,6 @@
 
 plugins {
     jacoco
-    groovy
     id("me.champeau.buildscan-recipes") version "0.2.3"
     id("org.nosphere.apache.rat") version "0.8.0"
     id("net.nemerosa.versioning") version "3.0.0"
