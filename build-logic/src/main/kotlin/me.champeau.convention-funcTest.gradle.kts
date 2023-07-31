@@ -23,17 +23,13 @@ plugins {
 }
 
 val functionalTestSourceSet = sourceSets.create("functionalTest") {
-    groovy.srcDirs("src/funcTest/groovy")
-    resources.srcDirs("src/funcTest/resources")
+    groovy.srcDir("src/funcTest/groovy")
+    resources.srcDir("src/funcTest/resources")
 }
 
 configurations {
-    named("functionalTestImplementation") {
-        extendsFrom(testImplementation.get())
-    }
-    named("functionalTestRuntimeOnly") {
-        extendsFrom(testRuntimeOnly.get())
-    }
+    getByName("functionalTestImplementation").extendsFrom(testImplementation.get())
+    getByName("functionalTestRuntimeOnly").extendsFrom(testRuntimeOnly.get())
     val pluginsUnderTest by creating {
         isCanBeConsumed = false
         isCanBeResolved = false
