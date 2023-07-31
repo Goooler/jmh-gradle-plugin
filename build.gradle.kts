@@ -19,9 +19,9 @@ plugins {
     id("org.nosphere.apache.rat") version "0.8.0"
     id("net.nemerosa.versioning") version "3.0.0"
     id("com.github.kt3k.coveralls") version "2.12.2"
-    id("me.champeau.plugin-configuration")
     id("me.champeau.convention-test")
     id("me.champeau.convention-funcTest")
+    id("me.champeau.plugin-configuration")
     id("jacoco")
     id("groovy")
 }
