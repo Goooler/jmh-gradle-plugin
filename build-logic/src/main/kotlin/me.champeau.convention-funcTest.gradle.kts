@@ -67,8 +67,8 @@ val classpathWithoutDevelopmentLibs: ArtifactView = configurations["pluginClassp
     }
 }
 
-tasks.named("pluginUnderTestMetadata") {
-    //configurations["pluginClasspath"].from(classpathWithoutDevelopmentLibs.files.elements)
+tasks.pluginUnderTestMetadata {
+    pluginClasspath.from(classpathWithoutDevelopmentLibs.files.elements)
 }
 
 val functionalTest by tasks.registering(Test::class) {
