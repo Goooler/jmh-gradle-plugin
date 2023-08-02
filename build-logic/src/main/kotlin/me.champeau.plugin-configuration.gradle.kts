@@ -109,7 +109,6 @@ signing {
 }
 
 tasks.withType<Sign>().configureEach {
-    notCompatibleWithConfigurationCache("https://docs.gradle.org/8.0.1/userguide/configuration_cache.html#config_cache:plugins")
     onlyIf { signing.isRequired }
 }
 
