@@ -75,8 +75,8 @@ val functionalTest by tasks.registering(Test::class) {
     mustRunAfter(tasks.test)
 
     reports {
-        html.outputLocation = project.file("${html.outputLocation.asFile.get().path}/functional")
-        junitXml.outputLocation = project.file("${html.outputLocation.asFile.get().path}/functional")
+        html.outputLocation = html.outputLocation.asFile.get().resolve("functional")
+        junitXml.outputLocation = html.outputLocation
     }
 }
 
