@@ -17,7 +17,7 @@
 plugins {
     jacoco
     id("me.champeau.buildscan-recipes") version "0.2.3"
-    id("org.nosphere.apache.rat") version "0.8.0"
+    id("org.nosphere.apache.rat") version "0.8.1"
     id("net.nemerosa.versioning") version "3.0.0"
     id("com.github.kt3k.coveralls") version "2.12.2"
     id("me.champeau.convention-test")
@@ -62,9 +62,9 @@ jacoco {
 tasks.jacocoTestReport {
     group = "Reporting"
     description = "Generate Jacoco coverage reports after running tests."
-    additionalSourceDirs.setFrom(project.files(sourceSets.main.get().allSource.srcDirs))
-    sourceDirectories.setFrom(project.files(sourceSets.main.get().allSource.srcDirs))
-    classDirectories.setFrom(project.files(sourceSets.main.get().output))
+    additionalSourceDirs.setFrom(sourceSets.main.map { it.allSource.srcDirs })
+    sourceDirectories.setFrom(sourceSets.main.map { it.allSource.srcDirs })
+    classDirectories.setFrom(sourceSets.main.map { it.output })
 }
 
 tasks.withType<GroovyCompile>().configureEach {
