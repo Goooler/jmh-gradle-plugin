@@ -51,6 +51,7 @@ abstract class AbstractFuncSpec extends Specification {
         testedGradleVersion = gradleVersion
     }
 
+    // TODO: We can remove this and fully enable CC in tests once bump the Shadow version to 8.1.1+.
     protected void withoutConfigurationCache(String reason) {
         noConfigurationCacheReason = reason
     }
