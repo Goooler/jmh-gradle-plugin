@@ -22,7 +22,7 @@ plugins {
     `java-gradle-plugin`
 }
 
-val functionalTestSourceSet = sourceSets.create("functionalTest") {
+val functionalTestSourceSet: SourceSet = sourceSets.create("functionalTest") {
     groovy.srcDir("src/funcTest/groovy")
     resources.srcDir("src/funcTest/resources")
 }
