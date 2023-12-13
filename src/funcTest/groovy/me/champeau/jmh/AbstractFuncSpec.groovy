@@ -84,6 +84,7 @@ abstract class AbstractFuncSpec extends Specification {
                 .withPluginClasspath()
                 .withProjectDir(projectDir)
                 .withArguments(arguments)
+                .withTestKitDir(testKitDir)
     }
 
     protected BuildResult build(String... arguments) {
@@ -99,5 +100,13 @@ abstract class AbstractFuncSpec extends Specification {
                 ? ['--stacktrace',
                    '--configuration-cache']
                 : ['--stacktrace']) + (arguments as List)
+    }
+
+    private static File getTestKitDir() {
+        def gradleUserHome = System.getenv("GRADLE_USER_HOME")
+        if (!gradleUserHome) {
+            gradleUserHome = new File(System.getProperty("user.home"), ".gradle").absolutePath
+        }
+        return new File(gradleUserHome, "testkit")
     }
 }
