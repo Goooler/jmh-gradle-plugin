@@ -52,6 +52,7 @@ abstract class AbstractFuncSpec extends Specification {
     }
 
     // TODO: We can remove this and fully enable CC in tests once bump the Shadow version to 8.1.1+.
+    // TODO: But Kotlin test still fails, it was suppressed in 1bab41646df6f47aea84ea3febeeec1c76cd2e79, need to investigate.
     protected void withoutConfigurationCache(String reason) {
         noConfigurationCacheReason = reason
     }
