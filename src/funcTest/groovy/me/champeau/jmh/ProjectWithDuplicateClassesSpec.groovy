@@ -121,15 +121,7 @@ class ProjectWithDuplicateClassesSpec extends AbstractFuncSpec {
 
         then:
         result.task(":jmh").outcome == SUCCESS
-        if (gradleVersion >= GradleVersion.version("8.8")) {
-            result.output.contains("""
-                will be copied to 'me/champeau/jmh/Helper.class', overwriting file
-            """.stripIndent())
-        } else {
-            result.output.contains("""
-                Encountered duplicate path "me/champeau/jmh/Helper.class" during copy operation configured with DuplicatesStrategy.WARN
-            """.stripIndent())
-        }
+        assertDuplicateClassesWarning(gradleVersion, result.output)
 
         where:
         gradleVersion << TESTED_GRADLE_VERSIONS
@@ -163,20 +155,19 @@ class ProjectWithDuplicateClassesSpec extends AbstractFuncSpec {
 
         then:
         result.task(":jmh").outcome == SUCCESS
-        if (gradleVersion >= GradleVersion.version("8.8")) {
-            result.output.contains("""
-                will be copied to 'me/champeau/jmh/Helper.class', overwriting file
-            """.stripIndent())
-        } else {
-            result.output.contains("""
-                Encountered duplicate path "me/champeau/jmh/Helper.class" during copy operation configured with DuplicatesStrategy.WARN
-            """.stripIndent())
-        }
+        assertDuplicateClassesWarning(gradleVersion, result.output)
 
         where:
         [shadowPlugin, gradleVersion] << [
                 TESTED_SHADOW_PLUGINS,
                 TESTED_GRADLE_VERSIONS
         ].combinations()
+    }
+
+    private static boolean assertDuplicateClassesWarning(GradleVersion gradleVersion, String output) {
+        final def message = gradleVersion >= GradleVersion.version("8.8") ?
+                "will be copied to 'me/champeau/jmh/Helper.class', overwriting file" :
+                "Encountered duplicate path \"me/champeau/jmh/Helper.class\" during copy operation configured with DuplicatesStrategy.WARN"
+        return output.contains(message)
     }
 }
