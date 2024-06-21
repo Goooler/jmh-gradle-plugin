@@ -41,6 +41,9 @@ tasks.withType<Test>().configureEach {
 
     useJUnitPlatform()
 
+    // https://docs.gradle.org/8.8/userguide/performance.html#execute_tests_in_parallel
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(1)
+
     // disabling Spock checks because Spock for whatever reason seems to consider the Groovy version of the
     // Gradle version under test to be processed, when it shouldn't
 //    jvmArgs("-Dspock.iKnowWhatImDoing.disableGroovyVersionCheck=true")
