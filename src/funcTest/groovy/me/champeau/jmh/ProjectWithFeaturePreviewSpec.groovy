@@ -16,6 +16,7 @@
 package me.champeau.jmh
 
 import org.gradle.testkit.runner.TaskOutcome
+import org.gradle.util.GradleVersion
 import spock.lang.Unroll
 
 @Unroll
@@ -30,11 +31,14 @@ class ProjectWithFeaturePreviewSpec extends AbstractFuncSpec {
         usingGradleVersion(gradleVersion)
 
         and:
-        settingsFile << """
-            plugins {
-                id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-            }
-        """
+        if (gradleVersion >= GradleVersion.version("8.9")) {
+            settingsFile.text =
+            """
+                plugins {
+                    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+                }\n
+            """ + settingsFile.text
+        }
 
         when:
         def result = build("jmh")
