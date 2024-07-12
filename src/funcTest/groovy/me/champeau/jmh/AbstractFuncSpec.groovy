@@ -65,6 +65,10 @@ abstract class AbstractFuncSpec extends Specification {
         file('build.gradle')
     }
 
+    File getSettingsFile() {
+        file('settings.gradle')
+    }
+
     File getBenchmarksCsv() {
         file("build/reports/benchmarks.csv")
     }
