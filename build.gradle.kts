@@ -37,7 +37,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.3-groovy-3.0") {
         exclude(mapOf("group" to "org.codehaus.groovy"))
     }
-    pluginsUnderTest("gradle.plugin.com.github.johnrengelman:shadow:7.1.2")
+    pluginsUnderTest("gradle.plugin.com.github.johnrengelman:shadow:8.0.0")
     pluginsUnderTest("io.github.goooler.shadow:shadow-gradle-plugin:8.1.8")
 
     testImplementation("org.openjdk.jmh:jmh-core:$jmhVersion")
