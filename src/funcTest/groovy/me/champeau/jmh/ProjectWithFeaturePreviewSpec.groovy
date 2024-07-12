@@ -28,8 +28,6 @@ class ProjectWithFeaturePreviewSpec extends AbstractFuncSpec {
     def "successfully executes benchmark which uses feature previews (#gradleVersion)"() {
         given:
         usingGradleVersion(gradleVersion)
-
-        and:
         settingsFile << """
             plugins {
                 id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
