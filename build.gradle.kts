@@ -34,7 +34,7 @@ dependencies {
     val jmhVersion = "1.37"
     implementation("org.openjdk.jmh:jmh-core:$jmhVersion")
 
-    testImplementation("org.spockframework:spock-core:2.3-groovy-3.0") {
+    testImplementation("org.spockframework:spock-core:2.3-groovy-4.0") {
         exclude(mapOf("group" to "org.codehaus.groovy"))
     }
     pluginsUnderTest("org.gradle.toolchains:foojay-resolver:0.10.0")
