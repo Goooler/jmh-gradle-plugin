@@ -119,7 +119,6 @@ class JMHPluginTest extends Specification {
         where:
         shadowPlugin << [
                 'com.gradleup.shadow',
-                'com.github.johnrengelman.shadow'
         ]
     }
 

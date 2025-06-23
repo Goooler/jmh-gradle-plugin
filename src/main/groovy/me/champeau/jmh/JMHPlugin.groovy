@@ -64,8 +64,6 @@ class JMHPlugin implements Plugin<Project> {
         dependencyHandler.addProvider(JMH_NAME, project.providers.provider { "${JMH_CORE_DEPENDENCY}${extension.jmhVersion.get()}" }) {}
         dependencyHandler.addProvider(JMH_NAME, project.providers.provider { "${JMH_GENERATOR_DEPENDENCY}${extension.jmhVersion.get()}" }) {}
 
-        def hasShadow = project.plugins.findPlugin('com.gradleup.shadow') != null || project.plugins.findPlugin('com.github.johnrengelman.shadow') != null
-
         createJmhSourceSet(project)
         final Configuration runtimeConfiguration = configureJmhRuntimeClasspathConfiguration(project, extension)
 
@@ -82,7 +80,8 @@ class JMHPlugin implements Plugin<Project> {
         def jmhCompileGenerated = createJmhCompileGeneratedClassesTask(project, jmhGeneratedSourcesDir, jmhGeneratedClassesDir, extension, java, toolchainService)
 
         def metaInfExcludes = ['module-info.class', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA']
-        TaskProvider<Jar> jmhJar = null
+        def hasShadow = project.plugins.hasPlugin('com.gradleup.shadow') || project.plugins.hasPlugin('com.github.johnrengelman.shadow')
+        TaskProvider<Jar> jmhJar
         if (hasShadow) {
             jmhJar = createShadowJmhJar(project, extension, jmhGeneratedResourcesDir, jmhGeneratedClassesDir, metaInfExcludes, runtimeConfiguration)
         } else {
