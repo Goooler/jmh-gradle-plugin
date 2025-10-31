@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
