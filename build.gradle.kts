@@ -45,7 +45,7 @@ dependencies {
 
     testImplementation("org.openjdk.jmh:jmh-core:$jmhVersion")
     testImplementation("org.openjdk.jmh:jmh-generator-bytecode:$jmhVersion")
-    testImplementation("commons-io:commons-io:2.21.0")
+    testImplementation("commons-io:commons-io:2.22.0")
     testImplementation("com.gradleup.shadow:shadow-gradle-plugin:8.3.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
