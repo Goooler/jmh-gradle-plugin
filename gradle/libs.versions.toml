@@ -9,7 +9,7 @@ jmh-core = { module = "org.openjdk.jmh:jmh-core", version.ref = "jmh" }
 jmh-generatorBytecode = { module = "org.openjdk.jmh:jmh-generator-bytecode", version.ref = "jmh" }
 junit-platformLauncher = { module = "org.junit.platform:junit-platform-launcher" }
 shadow-gradlePlugin = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "shadow" }
-spock-core = "org.spockframework:spock-core:2.3-groovy-4.0"
+spock-core = "org.spockframework:spock-core:2.5-groovy-6.0"
 
 [plugins]
 apache-rat = "org.nosphere.apache.rat:0.11.0"
